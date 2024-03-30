@@ -9,6 +9,7 @@ class suggestion extends Model
 {
     use HasFactory;
     
+    
     protected $fillable = [
         
         'name',
@@ -16,13 +17,19 @@ class suggestion extends Model
         'subject',
         'user_id',
         'dept',
-        'image',
+        'files',
       
         ];
         
 
         protected $table = 'suggestions';
 
-
-    
+        public function user()
+        {
+            return $this->belongsTo(User::class);
+        }
+        public function files()
+        {
+            return $this->hasMany(File::class);
+        }
 }

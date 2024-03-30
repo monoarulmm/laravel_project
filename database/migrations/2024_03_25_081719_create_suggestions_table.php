@@ -14,11 +14,14 @@ return new class extends Migration
         Schema::create('suggestions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('user_id')->nullable();
-            $table->string('dept')->nullable();
-            $table->string('semester')->nullable();
-            $table->string('subject')->nullable();
-            $table->string('image')->nullable();
+            $table->string('semester');
+            $table->string('dept');
+            $table->string('subject');
+            $table->unsignedBigInteger('user_id'); // Assuming you want to associate suggestions with users
+            $table->string('files')->nullable();
+
+            // Define foreign key constraint for user_id column
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +31,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('suggestions');
+        Schema::table('suggestions', function (Blueprint $table) {
+            $table->dropColumn('files');
+        });
     }
 };

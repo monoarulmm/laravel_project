@@ -97,6 +97,7 @@
 								<h4>{{$department->department}}</h4>
 							
 								<a href="{{route('delete.dept', $department->id) }}" class="btn btn-danger">Delete</a>
+								<a href="{{route('dept.update.page', $department->id) }}" class="btn btn-success">update</a>
 							</div>
 						</div>
 					</div>

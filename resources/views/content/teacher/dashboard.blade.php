@@ -138,7 +138,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-lg-6">
                                             <div class="fallback w-100">
-                                                <input type="file" name="image" class="dropify form-control" data-default-file="">
+                                                <input type="file" name="files[]" class="dropify form-control" multiple>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -212,7 +212,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-lg-6">
                                             <div class="fallback w-100">
-                                                <input type="file" name="image" class="dropify form-control" data-default-file="">
+                                                <input type="file" name="file" class="dropify form-control" >
                                             </div>
                                         </div>
                                         <div class="col-lg-6">

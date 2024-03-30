@@ -16,6 +16,7 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
+
     ],
 
     /*
@@ -44,18 +45,12 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-
+           
         'api' => [
-            'driver' => 'token',
+            'driver' => 'sanctum',
             'provider' => 'users',
-            'hash' => false,
         ],
-    
-        'studentinfo' => [ // Define your custom guard here
-            'driver' => 'session',
-            'provider' => 'studentinfos', // Assuming you have a provider named 'studentinfos'
-        ],
-
+       
 
         // 'userstu' => [
         //     'driver' => 'session',
@@ -96,10 +91,7 @@ return [
         //     'table' => 'users',
         // ],
 
-        'studentinfos' => [ // Define your custom provider here
-            'driver' => 'eloquent',
-            'model' => App\Models\studentinfo::class, // Assuming you have a model named 'Studentinfo'
-        ],
+       
     ],
 
     /*

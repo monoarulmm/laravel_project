@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\AuthController;
-
+use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\TeacherController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,12 +15,21 @@ use App\Http\Controllers\API\AuthController;
 |
 */
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Define routes using AuthController
-Route::group(['prefix' => 'auth'], function () {
-    Route::post('login', [AuthController::class, 'loginUser']);
-    Route::post('register', [AuthController::class, 'createUser']);
+
+
+Route::post('login',[UserController::class,'loginUser']);
+
+
+
+Route::group(['middleware' => 'auth:sanctum'],function(){
+
+    Route::post('add-suggestion',[TeacherController::class,'add_suggestion']);
+    Route::get('suggestion-delete/{id}',[TeacherController::class,'delete_suggestion']);
+    Route::get('user',[UserController::class,'userDetails']);
+    Route::get('logout',[UserController::class,'logout']);
+
 });

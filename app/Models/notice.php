@@ -15,7 +15,7 @@ class notice extends Model
         'description',
         'user_id',
         'dept',
-        'image',
+        'file',
       
         ];
         
